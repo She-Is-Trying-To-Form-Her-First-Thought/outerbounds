@@ -24,3 +24,13 @@
 #define CONDITION_UI_TREATMENT_QUALITY "condition_ui_treatment_quality"
 /// For the tgui window, this condition is fatal at maximum severity
 #define CONDITION_UI_MAX_SEVERITY_FATAL "condition_ui_max_severity_fatal"
+
+/// Bloodtype for insects
+#define BLOOD_TYPE_INSECTOID "HMT"
+/// Blood colour for insects
+#define BLOOD_COLOR_INSECTOID "#945d9b"
+
+/// Bloodtype for lizards
+#define BLOOD_TYPE_OUTERBOUNDS_LIZARD "CYN"
+/// Blood colour for lizards
+#define BLOOD_COLOR_OUTERBOUNDS_LIZARD "#7fe7ce"

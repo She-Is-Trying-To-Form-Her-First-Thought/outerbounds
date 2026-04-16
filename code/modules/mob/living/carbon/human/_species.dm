@@ -1976,9 +1976,21 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	//Note for future: Potentionally add a new C.dna.species() to build a template species for more accurate limb replacement
 
 	var/list/final_bodypart_overrides = new_species.bodypart_overrides.Copy()
-	if((new_species.digitigrade_customization == DIGITIGRADE_OPTIONAL && target.dna.features[FEATURE_LEGS] == DIGITIGRADE_LEGS) || new_species.digitigrade_customization == DIGITIGRADE_FORCED)
-		final_bodypart_overrides[BODY_ZONE_R_LEG] = /obj/item/bodypart/leg/right/digitigrade
-		final_bodypart_overrides[BODY_ZONE_L_LEG] = /obj/item/bodypart/leg/left/digitigrade
+	final_bodypart_overrides[BODY_ZONE_R_LEG] = new_species.digi_leg_overrides[BODY_ZONE_R_LEG] /// OUTERBOUNDS EDIT - final_bodypart_overrides[BODY_ZONE_R_LEG] = /obj/item/bodypart/leg/right/digitigrade
+	final_bodypart_overrides[BODY_ZONE_L_LEG] = new_species.digi_leg_overrides[BODY_ZONE_L_LEG] /// OUTERBOUNDS EDIT - final_bodypart_overrides[BODY_ZONE_L_LEG] = /obj/item/bodypart/leg/left/digitigrade
+	// OUTERBOUNDS ADDITION - allows for different digitigrade leg types
+	// if(new_species.digitigrade_customization == DIGITIGRADE_OPTIONAL)
+		// switch(target.dna.features["legs"])
+		/*	if(DIGI_HOOF)
+				final_bodypart_overrides[BODY_ZONE_R_LEG] = /obj/item/bodypart/leg/right/digitigrade/hoof
+				final_bodypart_overrides[BODY_ZONE_L_LEG] = /obj/item/bodypart/leg/left/digitigrade/hoof
+			if(DIGI_TALON)
+				final_bodypart_overrides[BODY_ZONE_R_LEG] = /obj/item/bodypart/leg/right/digitigrade/talon
+				final_bodypart_overrides[BODY_ZONE_L_LEG] = /obj/item/bodypart/leg/left/digitigrade/talon */
+			// if(DIGI_BUG)
+				// final_bodypart_overrides[BODY_ZONE_R_LEG] = /obj/item/bodypart/leg/right/digitigrade/insectoid
+				// final_bodypart_overrides[BODY_ZONE_L_LEG] = /obj/item/bodypart/leg/left/digitigrade/insectoid
+	// OUTERBOUNDS ADDITION END
 
 	for(var/obj/item/bodypart/old_part as anything in target.get_bodyparts())
 		if((old_part.change_exempt_flags & BP_BLOCK_CHANGE_SPECIES) || (old_part.bodypart_flags & BODYPART_IMPLANTED))

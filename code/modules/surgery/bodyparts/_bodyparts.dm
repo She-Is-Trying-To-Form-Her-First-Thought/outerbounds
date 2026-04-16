@@ -1176,6 +1176,10 @@
 	else if(HAS_TRAIT(human_owner, TRAIT_MUTANT_COLORS))
 		skin_tone = ""
 		var/datum/species/owner_species = human_owner.dna.species
+		// OUTERBOUNDS ADDITION - (roundstart slime) limb opacity
+		if(owner_species && owner_species.specific_alpha != 255)
+			alpha = owner_species.specific_alpha
+		// OUTERBOUNDS EDIT END
 		if(owner_species.fixed_mut_color)
 			species_color = owner_species.fixed_mut_color
 		else

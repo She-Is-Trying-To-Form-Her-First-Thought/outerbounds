@@ -126,8 +126,6 @@
 	if(!severity_changes_name)
 		return
 	var/severity_append = null
-	var/last_iterator_stored = null
-	var/iterations = 0
 	for(var/iterator as anything in severity_name_thresholds)
 		if(severity <= severity_name_thresholds[iterator])
 			severity_append = severity_name_thresholds[iterator]
